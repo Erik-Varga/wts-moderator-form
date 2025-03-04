@@ -91,8 +91,7 @@ function App() {
                     </div>
                   </div>
 
-                  {/* faq */}
-
+                  {/* modal */}
                   {isModal && 
                     <div className="relative z-20" aria-labelledby="modal-title" role="dialog" aria-modal="true">
                     
@@ -128,7 +127,6 @@ function App() {
                       </div>
                     </div>
                   }
-
 
                   {/* socials */}
                   <div className='flex space-x-4 my-4 mt-8'>
@@ -205,7 +203,7 @@ function App() {
               </div>
             </div>
 
-            <span className='text-xs p-2'>v1.1</span>
+            <span className='text-xs p-2'>v1.0</span>
           </div>
         </div>
 
