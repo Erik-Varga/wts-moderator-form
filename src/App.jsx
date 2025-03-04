@@ -18,8 +18,8 @@ function App() {
   }
 
   const handleSubmit = (e) => {
-    setIsSending(true);
     e.preventDefault();
+    setIsSending(true);
   }
 
   const size = 30;
@@ -214,7 +214,7 @@ function App() {
               </div>
             </div>
 
-            <span className='text-xs p-2'>v1.0</span>
+            <span className='text-xs p-2'>v1.1</span>
           </div>
         </div>
 
