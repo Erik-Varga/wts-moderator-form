@@ -8,7 +8,8 @@ import { SiIndeed } from 'react-icons/si'
 import { TbWorld } from 'react-icons/tb'
 
 function App() {
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
   }
 
@@ -93,6 +94,15 @@ function App() {
                     <div className='relative z-10 bg-white rounded-xl shadow-lg p-2 md:p-8 text-gray-600'>
                       <form action="https://formsubmit.co/d2f16ff55e67af109737b260bde0496c" method='POST' className='flex flex-col space-y-4'>
 
+                        {/* Honeypot field */}
+                        <div className="hidden">
+                          <label htmlFor="_honeypot">Don't fill this out if you're human:</label>
+                          <input type="text" id="_honeypot" name="_honeypot" />
+                        </div>
+
+                        {/* disable captcha */}
+                        <input type="hidden" name="_captcha" value={false} />
+
                         {/* name */}
                         <div>
                           <label htmlFor="name" className='text-sm'>Full Name *</label>
@@ -112,10 +122,10 @@ function App() {
                         </div>
 
                         {/* message */}
-                        <div>
+                        {/* <div>
                           <label htmlFor="message" className='text-sm'>Message</label>
                           <textarea type="text" name="message" id="message" placeholder='Message' rows="4" className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' ></textarea>
-                        </div>
+                        </div> */}
 
                         <div className='flex justify-between items-center'>
                         <span className='text-sm'>* Required </span>
@@ -136,6 +146,7 @@ function App() {
           <span className='text-xs p-2'>v1.0</span>
           </div>
         </div>
+        by submitting this form you consent WTS to contact you via phone or email
         <Footer />
       </div>
     </body>
