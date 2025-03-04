@@ -219,10 +219,10 @@ function App() {
               </div>
             </div>
 
-            <span className='text-xs p-2'>v1.0</span>
           </div>
         </div>
 
+        <span className='text-xs p-2'>v1.0</span>
         <Footer />
       </div>
     </body>
