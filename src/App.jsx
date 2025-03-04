@@ -6,11 +6,12 @@ import { IoCall, IoLocation, IoMail } from 'react-icons/io5'
 import { IoLogoFacebook, IoLogoLinkedin } from 'react-icons/io'
 import { SiIndeed } from 'react-icons/si'
 import { TbWorld } from 'react-icons/tb'
-import { FaQuestion } from 'react-icons/fa'
+import { FaQuestion, FaSpinner } from 'react-icons/fa'
 import { FaFaceSmile } from 'react-icons/fa6'
 
 function App() {
   const [isModal, setIsModal] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleModal = () => {
     setIsModal(!isModal);
@@ -18,6 +19,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSending(true);
   }
 
   const size = 30;
@@ -92,14 +94,14 @@ function App() {
                   </div>
 
                   {/* modal */}
-                  {isModal && 
+                  {isModal &&
                     <div className="relative z-20" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                    
+
                       <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
 
                       <div className="fixed inset-0 z-20 w-screen overflow-y-auto">
                         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                          
+
                           <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                               <div className="sm:flex sm:items-start">
@@ -192,7 +194,16 @@ function App() {
                           <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
                             onSubmit={handleSubmit}
                           >
-                            Send Form
+                            {isSending
+                              ?
+                              (
+                                <div className='flex items-center justify-center gap-2'>
+                                  <div className='animate-spin'><FaSpinner /></div>
+                                  <div>Sending...</div>
+                                </div>
+                              )
+                              :
+                              (<div>Send Form</div>)}
                           </button>
 
                         </div>
