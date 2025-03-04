@@ -17,9 +17,14 @@ function App() {
     setIsModal(!isModal);
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleClick = () => {
     setIsSending(true);
+  }
+
+  const handleSubmit = (e) => {
+    setInterval(() => {
+      e.preventDefault();
+    }, 1000)
   }
 
   const size = 30;
@@ -148,7 +153,7 @@ function App() {
                     <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -left-20 -bottom-20"></div>
 
                     <div className='relative z-10 bg-white rounded-xl shadow-lg p-2 md:p-8 text-gray-600'>
-                      <form action="https://formsubmit.co/d2f16ff55e67af109737b260bde0496c" method='POST' className='flex flex-col space-y-4'>
+                      <form action="https://formsubmit.co/d2f16ff55e67af109737b260bde0496c" method='POST' onSubmit={handleSubmit} className='flex flex-col space-y-4'>
 
                         {/* Honeypot field */}
                         <div className="hidden">
@@ -191,8 +196,8 @@ function App() {
                         </div>
                         <div className='flex justify-between items-center'>
                           <span className='text-sm'>* Required </span>
-                          <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
-                            onClick={handleSubmit}
+                          <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm" type='submit'
+                            onClick={handleClick}
                           >
                             {isSending
                               ?
@@ -214,7 +219,7 @@ function App() {
               </div>
             </div>
 
-            <span className='text-xs p-2'>v1.1</span>
+            <span className='text-xs p-2'>v1.0</span>
           </div>
         </div>
 
