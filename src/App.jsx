@@ -8,17 +8,22 @@ import { SiIndeed } from 'react-icons/si'
 import { TbWorld } from 'react-icons/tb'
 
 function App() {
+  const handleSubmit = () => {
+
+  }
+
   const size = 30;
 
   return (
     <body className="antialiased bg-gray-100">
       <div className='App flex flex-col justify-between min-h-screen bg-gray-100 transition-all duration-500 ease-in-out'>
 
+        {/* header */}
         <h1 className='font2 p-2'>WTS - Wireless Testing Solutions</h1>
 
+        {/* container */}
         <div className='flex w-full justify-center items-center'>
           <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 bg-cyan-700 w-full max-w-4xl rounded-xl shadow-lg text-white overflow-hidden">
-
             <div className='flex flex-col space-y-8 justify-between p-4 sm:p-12'>
 
               {/* info */}
@@ -30,11 +35,12 @@ function App() {
               </div>
 
               {/* contact */}
-
               <div className='flex flex-col md:flex-row'>
                 <div className="w-full flex flex-col justify-between">
                   <div></div>
                   <div className='flex flex-col space-y-6 w-full'>
+
+                    {/* wts phone */}
                     <div className='flex'>
                       <div className='w-1/12 md:w-2/12'>
                         <span><IoCall className='text-teal-100 text-xl' size={size * 0.8} /></span>
@@ -43,6 +49,8 @@ function App() {
                         <span>407-600-8151</span>
                       </div>
                     </div>
+
+                    {/* wts email */}
                     <div className='flex'>
                       <div className='w-1/12 md:w-2/12'>
                         <span><IoMail className='text-teal-100 text-xl' size={size * 0.8} /></span>
@@ -51,6 +59,8 @@ function App() {
                         <span><a href="mailto:moderator@wtsorg.com"></a>moderator-apply@wtsorg.com</span>
                       </div>
                     </div>
+
+                    {/* wts location */}
                     <div className='flex'>
                       <div className='w-1/12 md:w-2/12'>
                         <span><IoLocation className='text-teal-100 text-xl' size={size * 0.8} /></span>
@@ -62,6 +72,8 @@ function App() {
                       </div>
                     </div>
                   </div>
+
+                  {/* socials */}
                   <div className='flex space-x-4 my-4'>
                     <a href="#"><span><IoLogoFacebook size={size} /></span></a>
                     <a href="#"><span><IoLogoLinkedin size={size} /></span></a>
@@ -78,37 +90,38 @@ function App() {
                     <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -right-20 -top-10"></div>
                     <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -left-20 -bottom-20"></div>
 
-
                     <div className='relative z-10 bg-white rounded-xl shadow-lg p-2 md:p-8 text-gray-600'>
                       <form action="https://formsubmit.co/d2f16ff55e67af109737b260bde0496c" method='POST' className='flex flex-col space-y-4'>
 
                         {/* name */}
                         <div>
                           <label htmlFor="name" className='text-sm'>Full Name *</label>
-                          <input type="text" name="name" placeholder='Your name' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required />
+                          <input type="text" name="name" id="name" placeholder='Your name' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required />
                         </div>
 
                         {/* email */}
                         <div>
-                          <label htmlFor="" className='text-sm'>Email *</label>
-                          <input type="text" name="email" placeholder='username@domain.com' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+                          <label htmlFor="email" className='text-sm'>Email *</label>
+                          <input type="text" name="email" id="email" placeholder='username@domain.com' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
                         </div>
 
                         {/* phone */}
                         <div>
-                          <label htmlFor="" className='text-sm'>Phone *</label>
-                          <input type="text" name="phone" placeholder='(456) 789-1234' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required />
+                          <label htmlFor="phone" className='text-sm'>Phone *</label>
+                          <input type="text" name="phone" id="phone" placeholder='(456) 789-1234' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required />
                         </div>
 
                         {/* message */}
                         <div>
-                          <label htmlFor="" className='text-sm'>Message</label>
-                          <textarea type="text" name="message" placeholder='Message' rows="4" className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' ></textarea>
+                          <label htmlFor="message" className='text-sm'>Message</label>
+                          <textarea type="text" name="message" id="message" placeholder='Message' rows="4" className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' ></textarea>
                         </div>
 
                         <div className='flex justify-between items-center'>
                         <span className='text-sm'>* Required </span>
-                        <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm">
+                        <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
+                          onSubmit={handleSubmit}
+                          >
                           Send Form
                         </button>
 
@@ -120,7 +133,7 @@ function App() {
               </div>
             </div>
 
-
+          <span className='text-xs p-2'>v1.0</span>
           </div>
         </div>
         <Footer />
