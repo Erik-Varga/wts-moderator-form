@@ -6,11 +6,18 @@ import { IoCall, IoLocation, IoMail } from 'react-icons/io5'
 import { IoLogoFacebook, IoLogoLinkedin } from 'react-icons/io'
 import { SiIndeed } from 'react-icons/si'
 import { TbWorld } from 'react-icons/tb'
+import { FaQuestion } from 'react-icons/fa'
+import { FaFaceSmile } from 'react-icons/fa6'
 
 function App() {
+  const [isModal, setIsModal] = useState(false);
+
+  const handleModal = () => {
+    setIsModal(!isModal);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
   }
 
   const size = 30;
@@ -72,10 +79,59 @@ function App() {
                         <div>Longwood, FL 32779</div>
                       </div>
                     </div>
+
+                    {/* more info */}
+                    <div className='flex'>
+                      <div className='w-1/12 md:w-2/12'>
+                        <span><FaQuestion className='text-teal-100 text-xl' size={size * 0.8} /></span>
+                      </div>
+                      <div className='w-11/12 md:w-10/12 text-left'>
+                        <button onClick={handleModal}>More info ...</button>
+                      </div>
+                    </div>
                   </div>
 
+                  {/* faq */}
+
+                  {isModal && 
+                    <div className="relative z-20" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                    
+                      <div className="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+                      <div className="fixed inset-0 z-20 w-screen overflow-y-auto">
+                        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                          
+                          <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                              <div className="sm:flex sm:items-start">
+
+                                <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10">
+                                  <FaFaceSmile size={size} />
+                                </div>
+                                <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                  <h3 className="text-base font-semibold text-gray-900" id="modal-title">Test Moderator 101</h3>
+                                  <div className="mt-2">
+                                    <p className="text-sm text-gray-500">The moderator works directly with test participants and guides them through the study.</p>
+                                    <p className="text-sm text-gray-500 mt-2">The best way to maximize the chance of a successful product testing is to lead with a focused mindset and show proper hand motions by example. Use a learn-as-you-go approach. Keep instructions very simple yet precise.</p>
+                                    <p className="text-sm text-gray-500 mt-2">If a participant has difficulty with the motion, direct them positively back to the right path. Respond cheerfully yet truthfully.</p>
+                                    <p className="text-sm text-gray-500 mt-2">Moderators can have a natural conversation with participants, this establishes trust and participants are generally more motivated to complete the tests more accurately.</p>
+                                    <p className="text-sm text-gray-500 mt-2">Keep ideal time brief and remember that the main purpose of the study is to capture good quality tests.</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                              <button type="button" onClick={handleModal} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  }
+
+
                   {/* socials */}
-                  <div className='flex space-x-4 my-4'>
+                  <div className='flex space-x-4 my-4 mt-8'>
                     <a href="#"><span><IoLogoFacebook size={size} /></span></a>
                     <a href="#"><span><IoLogoLinkedin size={size} /></span></a>
                     <a href="#"><span><SiIndeed size={size} /></span></a>
@@ -86,7 +142,7 @@ function App() {
                 <div className="w-full">
                   {/* form */}
                   <div className='relative'>
-                    
+
                     {/* circles */}
                     <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -right-20 -top-10"></div>
                     <div className="absolute z-0 w-40 h-40 bg-teal-400 rounded-full -left-20 -bottom-20"></div>
@@ -103,6 +159,9 @@ function App() {
                         {/* disable captcha */}
                         <input type="hidden" name="_captcha" value={false} />
 
+                        {/* subject line */}
+                        <input type="hidden" name="_subject" value="New Moderator Form Submission!"></input>
+
                         {/* name */}
                         <div>
                           <label htmlFor="name" className='text-sm'>Full Name *</label>
@@ -112,7 +171,7 @@ function App() {
                         {/* email */}
                         <div>
                           <label htmlFor="email" className='text-sm'>Email *</label>
-                          <input type="text" name="email" id="email" placeholder='username@domain.com' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
+                          <input type="text" name="email" id="email" placeholder='username@domain.com' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
                         </div>
 
                         {/* phone */}
@@ -128,13 +187,13 @@ function App() {
                         </div> */}
 
                         <div className='text-sm'>
-                        By submitting this form you consent WTS to contact you via phone or email.
+                          By submitting this form you consent WTS to contact you via phone or email.
                         </div>
                         <div className='flex justify-between items-center'>
                           <span className='text-sm'>* Required </span>
                           <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
                             onSubmit={handleSubmit}
-                            >
+                          >
                             Send Form
                           </button>
 
@@ -146,10 +205,10 @@ function App() {
               </div>
             </div>
 
-          <span className='text-xs p-2'>v1.1</span>
+            <span className='text-xs p-2'>v1.1</span>
           </div>
         </div>
-       
+
         <Footer />
       </div>
     </body>
