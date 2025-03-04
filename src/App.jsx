@@ -127,13 +127,16 @@ function App() {
                           <textarea type="text" name="message" id="message" placeholder='Message' rows="4" className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' ></textarea>
                         </div> */}
 
+                        <div className='text-sm'>
+                        By submitting this form you consent WTS to contact you via phone or email.
+                        </div>
                         <div className='flex justify-between items-center'>
-                        <span className='text-sm'>* Required </span>
-                        <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
-                          onSubmit={handleSubmit}
-                          >
-                          Send Form
-                        </button>
+                          <span className='text-sm'>* Required </span>
+                          <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
+                            onSubmit={handleSubmit}
+                            >
+                            Send Form
+                          </button>
 
                         </div>
                       </form>
@@ -143,10 +146,10 @@ function App() {
               </div>
             </div>
 
-          <span className='text-xs p-2'>v1.0</span>
+          <span className='text-xs p-2'>v1.1</span>
           </div>
         </div>
-        by submitting this form you consent WTS to contact you via phone or email
+       
         <Footer />
       </div>
     </body>
