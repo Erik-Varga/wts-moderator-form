@@ -18,8 +18,8 @@ function App() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     setIsSending(true);
+    e.preventDefault();
   }
 
   const size = 30;
@@ -192,7 +192,7 @@ function App() {
                         <div className='flex justify-between items-center'>
                           <span className='text-sm'>* Required </span>
                           <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm"
-                            onSubmit={handleSubmit}
+                            onClick={handleSubmit}
                           >
                             {isSending
                               ?
