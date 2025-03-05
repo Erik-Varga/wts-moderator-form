@@ -1,13 +1,36 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-
-import Footer from './components/Footer'
 import { IoCall, IoLocation, IoMail } from 'react-icons/io5'
 import { IoLogoFacebook, IoLogoLinkedin } from 'react-icons/io'
 import { SiIndeed } from 'react-icons/si'
 import { TbWorld } from 'react-icons/tb'
 import { FaQuestion, FaSpinner } from 'react-icons/fa'
 import { FaFaceSmile } from 'react-icons/fa6'
+import Footer from './components/Footer'
+import './App.css'
+
+function formatPhone(input) {
+  //  if the input is null, return a null value
+  if (!input) return input;
+  // remove all characters from the input except number input.
+  const numberInput = input.replace(/[^\d]/g, "");
+  //  take the length of the value of the input
+  const numberInputLength = numberInput.length;
+  // if the number length is 1, 2, or 3, then return it as it is.
+  if (numberInputLength < 4) {
+    return numberInput;
+  } else if (numberInputLength < 7) {
+    // if the number input length is 4, 5, or 6, format it accordingly.
+    return `(${numberInput.slice(0, 3)}) ${numberInput.slice(3)}`;
+  } else {
+    //  if the number input length is 7, 8, 9, 10, or more, format it like the below.
+    return `(${numberInput.slice(0, 3)}) ${numberInput.slice(
+      3,
+      6
+    )}-${numberInput.slice(6, 10)}`;
+  }
+  // return empty string in case any condition doesn't satisfy.
+  return "";
+}
 
 function App() {
   const [isModal, setIsModal] = useState(false);
@@ -24,8 +47,20 @@ function App() {
   const handleSubmit = (e) => {
     setInterval(() => {
       e.preventDefault();
+
     }, 1000)
   }
+
+  // Binded phoneNumber with an input value and setPhoneNUmber is used to make changes to the value of phoneNumber
+  const [phone, setPhone] = useState("");
+
+  //  whenever input will change, handlePhone() function will invoke.
+  const handlePhone = (e) => {
+    // format phone number
+    const formattedPhone = formatPhone(e.target.value);
+    //  set the formatted phone number to the input value
+    setPhone(formattedPhone);
+  };
 
   const size = 30;
 
@@ -43,7 +78,7 @@ function App() {
 
               {/* info */}
               <div className='relative z-10'>
-                <h1 className='font-bold text-4xl tracking-wide'>Join our Moderator Team</h1>
+                <h1 className='font-bold text-3xl md:text-4xl tracking-wide'>Join our Moderator Team</h1>
                 <p className="p-2 text-cyan-100 text-sm">We are looking for individuals to help moderate participants in a hand-motion research study involving innovative features of Ray-Ban Sunglasses. If you are friendly, observant and comfortable working directly with test participants and would like to be added to the Moderator List, please complete this form.</p>
 
                 <div className="p-2 rounded flex justify-center items-center text-cyan-100 text-sm">Flexible Hours | Day-shift | In-Office | Temporary Contract | $17.50 per hour</div>
@@ -57,30 +92,30 @@ function App() {
 
                     {/* wts phone */}
                     <div className='flex'>
-                      <div className='w-1/12 md:w-2/12'>
+                      <div className='w-2/12'>
                         <span><IoCall className='text-teal-100 text-xl' size={size * 0.8} /></span>
                       </div>
-                      <div className='w-11/12 md:w-10/12 text-left'>
-                        <span>407-600-8151</span>
+                      <div className='w-10/12 text-left'>
+                        <span>(407) 600-8151</span>
                       </div>
                     </div>
 
                     {/* wts email */}
                     <div className='flex'>
-                      <div className='w-1/12 md:w-2/12'>
+                      <div className='w-2/12'>
                         <span><IoMail className='text-teal-100 text-xl' size={size * 0.8} /></span>
                       </div>
-                      <div className='w-11/12 md:w-10/12 text-left'>
-                        <span><a href="mailto:moderator@wtsorg.com"></a>moderator-apply@wtsorg.com</span>
+                      <div className='w-10/12text-left'>
+                        <span><a href="mailto:moderator@wtsorg.com"></a>moderator@wtsorg.com</span>
                       </div>
                     </div>
 
                     {/* wts location */}
                     <div className='flex'>
-                      <div className='w-1/12 md:w-2/12'>
+                      <div className='w-2/12'>
                         <span><IoLocation className='text-teal-100 text-xl' size={size * 0.8} /></span>
                       </div>
-                      <div className='w-11/12 md:w-10/12 text-left'>
+                      <div className='w-10/12 text-left'>
                         <div>2180 W State Road 434</div>
                         <div>Suite #2110</div>
                         <div>Longwood, FL 32779</div>
@@ -89,10 +124,10 @@ function App() {
 
                     {/* more info */}
                     <div className='flex'>
-                      <div className='w-1/12 md:w-2/12'>
+                      <div className='w-2/12'>
                         <span><FaQuestion className='text-teal-100 text-xl' size={size * 0.8} /></span>
                       </div>
-                      <div className='w-11/12 md:w-10/12 text-left'>
+                      <div className='w-10/12 text-left'>
                         <button onClick={handleModal}>More info ...</button>
                       </div>
                     </div>
@@ -111,7 +146,7 @@ function App() {
                             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                               <div className="sm:flex sm:items-start">
 
-                                <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10">
+                                <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-blue-400 sm:mx-0 sm:size-10">
                                   <FaFaceSmile size={size} />
                                 </div>
                                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -180,10 +215,20 @@ function App() {
                         </div>
 
                         {/* phone */}
+                        {/* <div>
+                          <label htmlFor="phone" className='text-sm'>Phone *</label>
+                          <input type="text" name="phone" id="phone" placeholder='(456) 789-1234' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern='^\(?([0-9]{0,3})\)?[-. ]?([0-9]{0,3})[-. ]?([0-9]{0,4})$'/>
+                        </div> */}
+
                         <div>
                           <label htmlFor="phone" className='text-sm'>Phone *</label>
-                          <input type="text" name="phone" id="phone" placeholder='(456) 789-1234' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required />
+                          <input type="text" onChange={(e) => handlePhone(e)} name="phone" id="phone" value={phone} placeholder='(XXX) XXX-XXXX' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern='^\(?([0-9]{0,3})\)?[-. ]?([0-9]{0,3})[-. ]?([0-9]{0,4})$' />
                         </div>
+
+                        <div style={{ textAlign: "center", marginTop: "30px" }}>
+                        {/* number input to take phone numbetr */}
+                        
+                      </div>
 
                         {/* message */}
                         {/* <div>
