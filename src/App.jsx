@@ -215,32 +215,16 @@ function App() {
                         </div>
 
                         {/* phone */}
-                        {/* <div>
-                          <label htmlFor="phone" className='text-sm'>Phone *</label>
-                          <input type="text" name="phone" id="phone" placeholder='(456) 789-1234' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern='^\(?([0-9]{0,3})\)?[-. ]?([0-9]{0,3})[-. ]?([0-9]{0,4})$'/>
-                        </div> */}
-
                         <div>
                           <label htmlFor="phone" className='text-sm'>Phone *</label>
                           <input type="text" onChange={(e) => handlePhone(e)} name="phone" id="phone" value={phone} placeholder='(XXX) XXX-XXXX' className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' required pattern='^\(?([0-9]{0,3})\)?[-. ]?([0-9]{0,3})[-. ]?([0-9]{0,4})$' />
                         </div>
 
-                        <div style={{ textAlign: "center", marginTop: "30px" }}>
-                        {/* number input to take phone numbetr */}
-                        
-                      </div>
-
-                        {/* message */}
-                        {/* <div>
-                          <label htmlFor="message" className='text-sm'>Message</label>
-                          <textarea type="text" name="message" id="message" placeholder='Message' rows="4" className='ring-1 ring-gray-300 w-full rounded-md px-4 py-2 mt-2 outline-none focus:ring-2 focus:ring-teal-300' ></textarea>
-                        </div> */}
-
                         <div className='text-sm'>
                           By submitting this form you consent WTS to contact you via phone or email.
                         </div>
                         <div className='flex justify-between items-center'>
-                          <span className='text-sm'>* Required </span>
+                          <span className='text-sm'>{isSending ? <span className='animate-ping'>Please wait</span> : <></>}</span>
                           <button className="inline-block self-end bg-cyan-700 text-white font-bold rounded-lg px-6 py-2 uppercase text-sm" type='submit'
                             onClick={handleClick}
                           >
@@ -255,8 +239,8 @@ function App() {
                               :
                               (<div>Send Form</div>)}
                           </button>
-
                         </div>
+                          <span className='text-sm'>* Required Field</span>
                       </form>
                     </div>
                   </div>
